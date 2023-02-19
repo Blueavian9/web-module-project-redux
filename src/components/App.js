@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import MovieList from './MovieList';
@@ -12,8 +12,8 @@ import AddMovieForm from './AddMovieForm';
 import FavoriteMovieList from './FavoriteMovieList';
 
 const App = props => {
-  const displayFavorites = true;
-
+  const { displayFavorites } = props;
+  
   return (
     <div>
       <nav className="navbar navbar-dark bg-dark">
@@ -48,4 +48,10 @@ const App = props => {
   );
 };
 
-export default App;
+
+const mapStateToProps = (state)=>{
+  return {
+    displayFavorites: state.favoritesReducer.displayFavorites
+  }
+}
+export default connect() (App);
